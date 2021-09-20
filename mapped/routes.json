@@ -1,0 +1,57 @@
+[
+      {
+        "uri": "/api/totcups",
+        "method": "GET",
+        "handler": "totcups^myRestAPIs"
+      },
+      {
+        "uri": "/api/totdomleagues",
+        "method": "GET",
+        "handler": "totdomleagues^myRestAPIs"
+      },
+      {
+        "uri": "/api/totdomcups",
+        "method": "GET",
+        "handler": "totdomcups^myRestAPIs"
+      },
+      {
+        "uri": "/api/totdomScups",
+        "method": "GET",
+        "handler": "totdomScups^myRestAPIs"
+      },
+       {
+        "uri": "/api/totdomintcups",
+        "method": "GET",
+        "handler": "totdomintcups^myRestAPIs"
+      },
+       {
+        "uri": "/api/totdomintleagues",
+        "method": "GET",
+        "handler": "totdomintleagues^myRestAPIs"
+      },
+      {
+        "uri": "/api/totdomLC",
+        "method": "GET",
+        "handler": "totdomLC^myRestAPIs"
+      },
+       {
+        "uri": "/api/totinthons",
+        "method": "GET",
+        "handler": "totinthons^myRestAPIs"
+      },
+      {
+        "uri": "/api/totintcups",
+        "method": "GET",
+        "handler": "totintcups^myRestAPIs"
+      },
+      {
+        "uri": "/api/totintScups",
+        "method": "GET",
+        "handler": "totintScups^myRestAPIs"
+      },
+      {
+        "uri": "/api/getcups/:club",
+        "method": "GET",
+        "handler": "getcups^myRestAPIs"
+      },
+]

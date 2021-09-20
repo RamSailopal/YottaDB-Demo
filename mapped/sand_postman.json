@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "5e7e6fd9-f0aa-4a4a-bbce-708897074bea",
+		"name": "YottaDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hello World",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// var reqBody = JSON.parse(request.data);\r",
+							"var resBody = JSON.parse(responseBody);\r",
+							"var flag=true\r",
+							"switch (responseCode.code){\r",
+							"    \r",
+							"    case 200:{\r",
+							"        tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"        tests[\"hello\"] = resBody.hello == 'world';\r",
+							"        break;\r",
+							"    }\r",
+							"    case 409:{\r",
+							"        tests[\"Status code is 409\"] = responseCode.code === 409;\r",
+							"        break;\r",
+							"    }\r",
+							"    default:{\r",
+							"        tests[\"Valid Response\"] = false;\r",
+							"    }\r",
+							"    \r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://sandbox_yottamgweb_1:8080/api/helloworld",
+					"protocol": "http",
+					"host": [
+						"sandbox_yottamgweb_1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"helloworld"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// var reqBody = JSON.parse(request.data);\r",
+							"var resBody = JSON.parse(responseBody);\r",
+							"var flag=true\r",
+							"switch (responseCode.code){\r",
+							"    \r",
+							"    case 200:{\r",
+							"        tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"        tests[\"removed\"] = resBody.response == 'England has been removed';\r",
+							"        break;\r",
+							"    }\r",
+							"    case 409:{\r",
+							"        tests[\"Status code is 409\"] = responseCode.code === 409;\r",
+							"        break;\r",
+							"    }\r",
+							"    default:{\r",
+							"        tests[\"Valid Response\"] = false;\r",
+							"    }\r",
+							"    \r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://sandbox_yottamgweb_1:8080/api/delcapitals/England",
+					"protocol": "http",
+					"host": [
+						"sandbox_yottamgweb_1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"delcapitals",
+						"England"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get capital",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// var reqBody = JSON.parse(request.data);\r",
+							"var resBody = JSON.parse(responseBody);\r",
+							"var flag=true\r",
+							"switch (responseCode.code){\r",
+							"    \r",
+							"    case 422:{\r",
+							"        tests[\"Status code is 422\"] = responseCode.code === 422;\r",
+							"        tests[\"error\"] = resBody.error == 'Unable to identify a capital with the specified country';\r",
+							"        break;\r",
+							"    }\r",
+							"    case 409:{\r",
+							"        tests[\"Status code is 409\"] = responseCode.code === 409;\r",
+							"        break;\r",
+							"    }\r",
+							"    default:{\r",
+							"        tests[\"Valid Response\"] = false;\r",
+							"    }\r",
+							"    \r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://sandbox_yottamgweb_1:8080/api/getcapitals/England",
+					"protocol": "http",
+					"host": [
+						"sandbox_yottamgweb_1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getcapitals",
+						"England"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add London",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// var reqBody = JSON.parse(request.data);\r",
+							"var resBody = JSON.parse(responseBody);\r",
+							"var flag=true\r",
+							"switch (responseCode.code){\r",
+							"    \r",
+							"    case 200:{\r",
+							"        tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"        tests[\"country\"] = resBody.country == 'England';\r",
+							"        tests[\"ok\"] = resBody.ok == true;\r",
+							"        break;\r",
+							"    }\r",
+							"    case 409:{\r",
+							"        tests[\"Status code is 409\"] = responseCode.code === 409;\r",
+							"        break;\r",
+							"    }\r",
+							"    default:{\r",
+							"        tests[\"Valid Response\"] = false;\r",
+							"    }\r",
+							"    \r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"country\":\"England\", \"capital\":\"London\"}"
+				},
+				"url": {
+					"raw": "http://sandbox_yottamgweb_1:8080/api/addcapitals",
+					"protocol": "http",
+					"host": [
+						"sandbox_yottamgweb_1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"addcapitals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get London",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// var reqBody = JSON.parse(request.data);\r",
+							"var resBody = JSON.parse(responseBody);\r",
+							"var flag=true\r",
+							"switch (responseCode.code){\r",
+							"    \r",
+							"    case 200:{\r",
+							"        tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"        tests[\"capital\"] = resBody.capital == 'London';\r",
+							"        break;\r",
+							"    }\r",
+							"    case 409:{\r",
+							"        tests[\"Status code is 409\"] = responseCode.code === 409;\r",
+							"        break;\r",
+							"    }\r",
+							"    default:{\r",
+							"        tests[\"Valid Response\"] = false;\r",
+							"    }\r",
+							"    \r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://sandbox_yottamgweb_1:8080/api/getcapitals/England",
+					"protocol": "http",
+					"host": [
+						"sandbox_yottamgweb_1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getcapitals",
+						"England"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

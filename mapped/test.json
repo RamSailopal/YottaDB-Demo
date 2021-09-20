@@ -1,0 +1,27 @@
+[
+ {
+  "tests": [
+	    {
+            "name" : "Remove Global entry",
+	    "action" : "curl http://sandbox_yottamgweb_1:8080/api/delcapitals/England",
+	    "result": [
+		        {
+			  "global": "^CAPITALS(\"England\")",
+                          "value": ""
+			}
+	              ]
+            },
+            {
+             "name" : "Add Global entry",
+             "action" : "curl -i -d '{\"country\":\"England\", \"capital\":\"London\"}' -H \"Content-Type: application/json\" -X POST http://sandbox_yottamgweb_1:8080/api/addcapitals",
+             "result": [
+                         {
+                           "global": "^CAPITALS(\"England\")",
+                           "value": "London"
+                         }
+                       ]
+             }
+
+   ]
+  }
+ ]
