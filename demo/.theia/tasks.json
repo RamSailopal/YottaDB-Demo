@@ -13,18 +13,6 @@
 			"type": "shell",
 			"command": "tail -f /home/project/log/rcomp.log"
 		},
-        {
-                        "label": "API tests",
-                        "type": "shell",
-                        "command": "sudo chmod 0600 /root/.ssh/id_rsa && sudo bash -c 'ssh -o \"StrictHostKeyChecking Off\" root@demo_newman_1 \"newman run /home/newman/demo_postman.json\"'"
-                },
-        {
-                        "label": "Global tests",
-                        "type": "shell",
-                        "command": "sudo chmod 0600 /root/.ssh/id_rsa && sudo bash -c 'ssh -o \"StrictHostKeyChecking Off\" root@demo_yottamgweb_1 \"export ydb_gbldir=/opt/yottadb/yottadb.gld && /usr/local/YottaDB-CI-Testrunner/testrun.py --file=/opt/mgweb/mapped/test1.json\"'"
-                },
-
-
 
 	]
 }
