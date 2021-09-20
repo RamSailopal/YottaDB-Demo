@@ -65,7 +65,7 @@ This repo contains ssh keys for demonstation/sandpit purposes only. For a produc
 
 # Conclusion
 
-1) West Bromwich Albion is the joint 15th most successful football club in England!!!
+1) West Bromwich Albion is the joint 15th most successful football club in England (consisting of 92 professional clubs)!!!
 
 2) YottaDB can be integrated with third party business intellegence tools even without the need of using the SQL Octo plugin.
 
@@ -81,7 +81,7 @@ Eclipse Theia web IDE:
 
 https://theia-ide.org/
 
-Metabase:
+Metabase business intellegence tool:
 
 https://www.metabase.com/
 
