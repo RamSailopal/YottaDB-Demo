@@ -24,7 +24,7 @@ The categorised data was then served via various endpoints:
 
 ![Alt text](footieide.PNG?raw=true "Football IDE")
 
-These endpoints where then "consumed" via the Metabase open source business intellegence tool and the http plugin and view data in graph format.
+These endpoints were then "consumed" via the Metabase open source business intellegence tool and the http plugin and view data in graph format.
 
 # Provisioning the Stack
 
