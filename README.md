@@ -14,9 +14,9 @@ The solution builds primarily on the YottaDB-APIDev repo:
 
 https://github.com/RamSailopal/YottaDB-APIDev
 
-Data was scraped from the following link - https://en.wikipedia.org/wiki/List_of_football_clubs_in_England_by_competitive_honours_won and pulled into a YottaDB global called ^Football A "dump" of this global can be found in:
+Data was scraped from the following link - https://en.wikipedia.org/wiki/List_of_football_clubs_in_England_by_competitive_honours_won and pulled into a YottaDB global called **^Football** A "dump" of this global can be found in:
 
-   EnglishFootball/Football.go
+   **EnglishFootball/Football.go**
 
 ![Alt text](footieglo.PNG?raw=true "Football Global")
 
