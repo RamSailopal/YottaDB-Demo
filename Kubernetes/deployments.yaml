@@ -160,13 +160,13 @@ spec:
           claimName: demo-pvc
       - name: ssh
         hostPath:
-          path: ../.ssh
+          path: /usr/local/Yottadb-Demo/.ssh
       - name: settings
         hostPath:
-          path: ../project
+          path: /usr/local/Yottadb-Demo/project
       - name: theia
         hostPath:
-          path: .theia
+          path: /usr/local/Yottadb-Demo/Kubernetes/.theia
 ---
 apiVersion: apps/v1
 kind: Deployment
