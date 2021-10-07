@@ -47,19 +47,19 @@ spec:
           claimName: demo-pvc
       - name: ssh
         hostPath:
-          path: ../.ssh
+          path: /usr/local/Yottadb-Demo/.ssh
       - name: lsync
         hostPath:
-          path: ../lsyncd/lysncd.conf
+          path: /usr/local/Yottadb-Demo/lsyncd/lysncd.conf
       - name: footie
         hostPath:
-          path: ../EnglishFootball
+          path: /usr/local/Yottadb-Demo/EnglishFootball
       - name: entrypoint
         hostPath:
-          path: ../entrypoint
+          path: /usr/local/Yottadb-Demo/entrypoint
       - name: mgweb
         hostPath:
-          path: ../mapped
+          path: /usr/local/Yottadb-Demo/mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -110,19 +110,19 @@ spec:
           claimName: demo-pvc
       - name: ssh
         hostPath:
-          path: ../.ssh
+          path: /usr/local/Yottadb-Demo/.ssh
       - name: lsync
         hostPath:
-          path: ../lsyncd/lysncd.conf
+          path: /usr/local/Yottadb-Demo/lsyncd/lysncd.conf
       - name: footie
         hostPath:
-          path: ../EnglishFootball
+          path: /usr/local/Yottadb-Demo/EnglishFootball
       - name: entrypoint
         hostPath:
-          path: ../entrypoint
+          path: /usr/local/Yottadb-Demo/entrypoint
       - name: mgweb
         hostPath:
-          path: ../mapped
+          path: /usr/local/Yottadb-Demo/mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -195,10 +195,10 @@ spec:
       volumes:
       - name: ssh
         hostPath:
-          path: ../.ssh
+          path: /usr/local/Yottadb-Demo/.ssh
       - name: newman
         hostPath:
-          path: ../mapped
+          path: /usr/local/Yottadb-Demo/mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -230,5 +230,5 @@ spec:
       volumes:
       - name: metabase
         hostPath:
-          path: ../metabase
+          path: /usr/local/Yottadb-Demo/metabase
 
