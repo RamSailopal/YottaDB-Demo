@@ -1,0 +1,121 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yottamgweb-deploy
+  labels:
+    app: yottamgweb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: yottamgweb
+  template:
+    metadata:
+      labels:
+        app: yottamgweb
+    spec:
+      containers:
+      - name: yottamgweb
+        image: docker.io/ramb0/yotta-mgweb:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: "/home/project"
+          name: demovol
+      volumes:
+        - name: demovol
+          persistenVolumeClaim:
+            claimName: demo-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yottaglobal-deploy
+  labels:
+    app: yottaglobal
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: yottaglobal
+  template:
+    metadata:
+      labels:
+        app: yottaglobal
+    spec:
+      containers:
+      - name: yottaglobal
+        image: docker.io/ramb0/yotta-mgweb:latest
+        ports:
+        - containerPort: 8001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ide-deployment
+  labels:
+    app: ide
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ide
+  template:
+    metadata:
+      labels:
+        app: ide
+    spec:
+      containers:
+      - name: ide
+        image: docker.io/ramb0/theia-mumps:latest
+        ports:
+        - containerPort: 3002
+        volumeMounts:
+        - mountPath: "/home/project"
+          name: demovol
+      volumes:
+        - name: demovol
+          persistenVolumeClaim: 
+            claimName: demo-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newman-deployment
+  labels:
+    app: newman
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: newman
+  template:
+    metadata:
+      labels:
+        app: newman
+    spec:
+      containers:
+      - name: newman
+        image: docker.io/ramb0/newman-ssh
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metabase-deployment
+  labels:
+    app: metabase
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: metabase
+  template:
+    metadata:
+      labels:
+        app: metabase
+    spec:
+      containers:
+      - name: metabase
+        image: docker.io/huksley/metabase
+        ports:
+        - containerPort: 3000
