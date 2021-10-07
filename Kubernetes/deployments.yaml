@@ -24,7 +24,7 @@ spec:
           name: demovol
       volumes:
         - name: demovol
-          persistenVolumeClaim:
+          persistentVolumeClaim:
             claimName: demo-pvc
 ---
 apiVersion: apps/v1
@@ -75,7 +75,7 @@ spec:
           name: demovol
       volumes:
         - name: demovol
-          persistenVolumeClaim: 
+          persistentVolumeClaim: 
             claimName: demo-pvc
 ---
 apiVersion: apps/v1
