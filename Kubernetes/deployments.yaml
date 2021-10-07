@@ -17,15 +17,49 @@ spec:
       containers:
       - name: yottamgweb
         image: docker.io/ramb0/yotta-mgweb:latest
+        command: [["/bin/bash"]
+        args: ["-c","/home/entrypoint/entrypoint.sh"]
+        env:
+        - name: glbviewport
+          value: "8001"
+        - name: glbviewadd
+          value: "$glbviewadd"
+        - name: ydb_gbldir
+          value: "/opt/yottadb/yottadb.gld"
         ports:
         - containerPort: 8080
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
-      volumes:
+        - mountPath: "/root/.ssh"
+          name: ssh
+        - mountPath: "/etc/lsyncd.conf"
+          name: lsync
+        - mountPath: "/home/footie"
+          name: footie
+        - mountPath: "/home/entrypoint"
+          name: entrypoint
+        - mountPath: "/opt/mgweb/mapped"
+          name: mgweb
+        volumes:
         - name: demovol
           persistentVolumeClaim:
             claimName: demo-pvc
+        - name: ssh
+          hostPath:
+            path: ../.ssh
+        - name: lsync
+          hostPath:
+            path: ../lsyncd/lysncd.conf
+        - name: footie
+          hostPath:
+            path: ../EnglishFootball
+        - name: entrypoint
+          hostPath:
+            path: ../entrypoint
+        - name: mgweb
+          hostPath:
+            path: ../mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -46,8 +80,49 @@ spec:
       containers:
       - name: yottaglobal
         image: docker.io/ramb0/yotta-mgweb:latest
+        command: [["/bin/bash"]
+        args: ["-c","/home/entrypoint/entrypoint.sh"]
+        env:
+        - name: glbviewport
+          value: "8001"
+        - name: glbviewadd
+          value: "$glbviewadd"
+        - name: ydb_gbldir
+          value: "/opt/yottadb/yottadb.gld"
         ports:
         - containerPort: 8001
+        volumeMounts:
+        - mountPath: "/home/project"
+          name: demovol
+        - mountPath: "/root/.ssh"
+          name: ssh
+        - mountPath: "/etc/lsyncd.conf"
+          name: lsync
+        - mountPath: "/home/footie"
+          name: footie
+        - mountPath: "/home/entrypoint"
+          name: entrypoint
+        - mountPath: "/opt/mgweb/mapped"
+          name: mgweb
+        volumes:
+        - name: demovol
+          persistentVolumeClaim:
+            claimName: demo-pvc
+        - name: ssh
+          hostPath:
+            path: ../.ssh
+        - name: lsync
+          hostPath:
+            path: ../lsyncd/lysncd.conf
+        - name: footie
+          hostPath:
+            path: ../EnglishFootball
+        - name: entrypoint
+          hostPath:
+            path: ../entrypoint
+        - name: mgweb
+          hostPath:
+            path: ../mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -73,10 +148,25 @@ spec:
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
-      volumes:
+        - mountPath: "/home/yottadb-settings"
+          name: settings
+        - mountPath: "/root/.ssh"
+          name: ssh
+        - mountPath: "/home/theia/.theia"
+          name: theia
+        volumes:
         - name: demovol
-          persistentVolumeClaim: 
+          persistentVolumeClaim:
             claimName: demo-pvc
+        - name: ssh
+          hostPath:
+            path: ../.ssh
+        - name: settings
+          hostPath:
+            path: ../project
+        - name: theia
+          hostPath:
+            path: .theia
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -97,6 +187,18 @@ spec:
       containers:
       - name: newman
         image: docker.io/ramb0/newman-ssh
+        volumeMounts:
+        - mountPath: "/root/.ssh"
+          name: ssh
+        - mountPath: "/home/newman"
+          name: newman
+        volumes:
+        - name: ssh
+          hostPath:
+            path: ../.ssh
+        - name: newman
+          hostPath:
+            path: ../mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -117,5 +219,16 @@ spec:
       containers:
       - name: metabase
         image: docker.io/huksley/metabase
+        env:
+        - name: MB_DB_FILE
+          value: "/home/metabase/metabase.db"
         ports:
         - containerPort: 3000
+        volumeMounts:
+        - mountPath: "/home/metabase"
+          name: metabase
+        volumes:
+        - name: metabase
+          hostPath:
+            path: ../metabase
+
