@@ -17,7 +17,7 @@ spec:
       containers:
       - name: yottamgweb
         image: docker.io/ramb0/yotta-mgweb:latest
-        command: [["/bin/bash"]
+        command: ["/bin/bash"]
         args: ["-c","/home/entrypoint/entrypoint.sh"]
         env:
         - name: glbviewport
@@ -41,25 +41,25 @@ spec:
           name: entrypoint
         - mountPath: "/opt/mgweb/mapped"
           name: mgweb
-        volumes:
-        - name: demovol
-          persistentVolumeClaim:
-            claimName: demo-pvc
-        - name: ssh
-          hostPath:
-            path: ../.ssh
-        - name: lsync
-          hostPath:
-            path: ../lsyncd/lysncd.conf
-        - name: footie
-          hostPath:
-            path: ../EnglishFootball
-        - name: entrypoint
-          hostPath:
-            path: ../entrypoint
-        - name: mgweb
-          hostPath:
-            path: ../mapped
+      volumes:
+      - name: demovol
+        persistentVolumeClaim:
+          claimName: demo-pvc
+      - name: ssh
+        hostPath:
+          path: ../.ssh
+      - name: lsync
+        hostPath:
+          path: ../lsyncd/lysncd.conf
+      - name: footie
+        hostPath:
+          path: ../EnglishFootball
+      - name: entrypoint
+        hostPath:
+          path: ../entrypoint
+      - name: mgweb
+        hostPath:
+          path: ../mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -80,7 +80,7 @@ spec:
       containers:
       - name: yottaglobal
         image: docker.io/ramb0/yotta-mgweb:latest
-        command: [["/bin/bash"]
+        command: ["/bin/bash"]
         args: ["-c","/home/entrypoint/entrypoint.sh"]
         env:
         - name: glbviewport
@@ -104,25 +104,25 @@ spec:
           name: entrypoint
         - mountPath: "/opt/mgweb/mapped"
           name: mgweb
-        volumes:
-        - name: demovol
-          persistentVolumeClaim:
-            claimName: demo-pvc
-        - name: ssh
-          hostPath:
-            path: ../.ssh
-        - name: lsync
-          hostPath:
-            path: ../lsyncd/lysncd.conf
-        - name: footie
-          hostPath:
-            path: ../EnglishFootball
-        - name: entrypoint
-          hostPath:
-            path: ../entrypoint
-        - name: mgweb
-          hostPath:
-            path: ../mapped
+      volumes:
+      - name: demovol
+        persistentVolumeClaim:
+          claimName: demo-pvc
+      - name: ssh
+        hostPath:
+          path: ../.ssh
+      - name: lsync
+        hostPath:
+          path: ../lsyncd/lysncd.conf
+      - name: footie
+        hostPath:
+          path: ../EnglishFootball
+      - name: entrypoint
+        hostPath:
+          path: ../entrypoint
+      - name: mgweb
+        hostPath:
+          path: ../mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -154,19 +154,19 @@ spec:
           name: ssh
         - mountPath: "/home/theia/.theia"
           name: theia
-        volumes:
-        - name: demovol
-          persistentVolumeClaim:
-            claimName: demo-pvc
-        - name: ssh
-          hostPath:
-            path: ../.ssh
-        - name: settings
-          hostPath:
-            path: ../project
-        - name: theia
-          hostPath:
-            path: .theia
+      volumes:
+      - name: demovol
+        persistentVolumeClaim:
+          claimName: demo-pvc
+      - name: ssh
+        hostPath:
+          path: ../.ssh
+      - name: settings
+        hostPath:
+          path: ../project
+      - name: theia
+        hostPath:
+          path: .theia
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -192,13 +192,13 @@ spec:
           name: ssh
         - mountPath: "/home/newman"
           name: newman
-        volumes:
-        - name: ssh
-          hostPath:
-            path: ../.ssh
-        - name: newman
-          hostPath:
-            path: ../mapped
+      volumes:
+      - name: ssh
+        hostPath:
+          path: ../.ssh
+      - name: newman
+        hostPath:
+          path: ../mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -227,8 +227,8 @@ spec:
         volumeMounts:
         - mountPath: "/home/metabase"
           name: metabase
-        volumes:
-        - name: metabase
-          hostPath:
-            path: ../metabase
+      volumes:
+      - name: metabase
+        hostPath:
+          path: ../metabase
 
