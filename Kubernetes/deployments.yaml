@@ -171,38 +171,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: newman-deployment
-  labels:
-    app: newman
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: newman
-  template:
-    metadata:
-      labels:
-        app: newman
-    spec:
-      containers:
-      - name: newman
-        image: docker.io/ramb0/newman-ssh
-        volumeMounts:
-        - mountPath: "/root/.ssh"
-          name: ssh
-        - mountPath: "/home/newman"
-          name: newman
-      volumes:
-      - name: ssh
-        hostPath:
-          path: /usr/local/YottaDB-Demo/.ssh
-      - name: newman
-        hostPath:
-          path: /usr/local/YottaDB-Demo/mapped
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: metabase-deployment
   labels:
     app: metabase
@@ -219,6 +187,8 @@ spec:
       containers:
       - name: metabase
         image: docker.io/huksley/metabase
+        command: ["/bin/bash"]
+        args: ["-c","/home/entrypoint/entrypoint.sh"]
         env:
         - name: MB_DB_FILE
           value: "/home/metabase/metabase.db"
@@ -227,8 +197,11 @@ spec:
         volumeMounts:
         - mountPath: "/home/metabase"
           name: metabase
+        - mountPath: "/home/entrypoint"
+          name: entrypoint
       volumes:
       - name: metabase
         hostPath:
           path: /usr/local/YottaDB-Demo/metabase
-
+      - name: entrypoint
+          path: /usr/local/YottaDB-Demo/Kubernetes/metaentry
