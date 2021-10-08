@@ -10,7 +10,7 @@ spec:
     - port: 8080
       targetPort: 8080
   externalIPs:
-    - 10.0.2.15
+    - $IPADD
 ---
 apiVersion: v1
 kind: Service
@@ -23,7 +23,7 @@ spec:
     - port: 8001
       targetPort: 8001
   externalIPs:
-    - 10.0.2.15
+    - $IPADD
 ---
 apiVersion: v1
 kind: Service
@@ -49,4 +49,4 @@ spec:
     - port: 3002
       targetPort: 3000
   externalIPs:
-    - 10.0.2.15
+    - $IPADD
