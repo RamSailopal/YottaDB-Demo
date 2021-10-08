@@ -23,7 +23,7 @@ spec:
         - name: glbviewport
           value: "8001"
         - name: glbviewadd
-          value: "$glbviewadd"
+          value: "localhost"
         - name: ydb_gbldir
           value: "/opt/yottadb/yottadb.gld"
         ports:
@@ -86,7 +86,7 @@ spec:
         - name: glbviewport
           value: "8001"
         - name: glbviewadd
-          value: "$glbviewadd"
+          value: "localhost"
         - name: ydb_gbldir
           value: "/opt/yottadb/yottadb.gld"
         ports:
@@ -144,7 +144,7 @@ spec:
       - name: ide
         image: docker.io/ramb0/theia-mumps:latest
         ports:
-        - containerPort: 3002
+        - containerPort: 3000
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
