@@ -18,7 +18,7 @@ metadata:
   name: yotta-global
 spec:
   selector:
-    app: yottaglobal
+    app: yottamgweb
   ports:
     - port: 8001
       targetPort: 8001
