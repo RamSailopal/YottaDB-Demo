@@ -19,8 +19,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - yottamgweb
-          - ide
+          - localhost
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
