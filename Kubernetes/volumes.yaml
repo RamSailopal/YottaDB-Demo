@@ -9,7 +9,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
-  storageClassName: local-storage
+  storageClassName: "" 
   local:
     path: /mnt/kube/volume
   nodeAffinity:
@@ -19,8 +19,8 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - ide
           - yottamgweb
+          - ide
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -28,11 +28,11 @@ metadata:
   name: demo-pvc
   namespace: default
 spec:
-  storageClassName: "manual" # Empty string must be explicitly set otherwise default StorageClass will be set
   volumeName: demo-pv
   volumeMode: Filesystem
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 1Gi
