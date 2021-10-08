@@ -204,4 +204,5 @@ spec:
         hostPath:
           path: /usr/local/YottaDB-Demo/metabase
       - name: entrypoint
+        hostPath:
           path: /usr/local/YottaDB-Demo/Kubernetes/metaentry
