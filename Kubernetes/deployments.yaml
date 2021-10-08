@@ -47,19 +47,19 @@ spec:
           claimName: demo-pvc
       - name: ssh
         hostPath:
-          path: /usr/local/Yottadb-Demo/.ssh
+          path: /usr/local/YottaDB-Demo/.ssh
       - name: lsync
         hostPath:
-          path: /usr/local/Yottadb-Demo/lsyncd/lysncd.conf
+          path: /usr/local/YottaDB-Demo/lsyncd/lysncd.conf
       - name: footie
         hostPath:
-          path: /usr/local/Yottadb-Demo/EnglishFootball
+          path: /usr/local/YottaDB-Demo/EnglishFootball
       - name: entrypoint
         hostPath:
-          path: /usr/local/Yottadb-Demo/entrypoint
+          path: /usr/local/YottaDB-Demo/entrypoint
       - name: mgweb
         hostPath:
-          path: /usr/local/Yottadb-Demo/mapped
+          path: /usr/local/YottaDB-Demo/mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -110,19 +110,19 @@ spec:
           claimName: demo-pvc
       - name: ssh
         hostPath:
-          path: /usr/local/Yottadb-Demo/.ssh
+          path: /usr/local/YottaDB-Demo/.ssh
       - name: lsync
         hostPath:
-          path: /usr/local/Yottadb-Demo/lsyncd/lysncd.conf
+          path: /usr/local/YottaDB-Demo/lsyncd/lysncd.conf
       - name: footie
         hostPath:
-          path: /usr/local/Yottadb-Demo/EnglishFootball
+          path: /usr/local/YottaDB-Demo/EnglishFootball
       - name: entrypoint
         hostPath:
-          path: /usr/local/Yottadb-Demo/entrypoint
+          path: /usr/local/YottaDB-Demo/entrypoint
       - name: mgweb
         hostPath:
-          path: /usr/local/Yottadb-Demo/mapped
+          path: /usr/local/YottaDB-Demo/mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -160,13 +160,13 @@ spec:
           claimName: demo-pvc
       - name: ssh
         hostPath:
-          path: /usr/local/Yottadb-Demo/.ssh
+          path: /usr/local/YottaDB-Demo/.ssh
       - name: settings
         hostPath:
-          path: /usr/local/Yottadb-Demo/project
+          path: /usr/local/YottaDB-Demo/project
       - name: theia
         hostPath:
-          path: /usr/local/Yottadb-Demo/Kubernetes/.theia
+          path: /usr/local/YottaDB-Demo/Kubernetes/.theia
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -195,10 +195,10 @@ spec:
       volumes:
       - name: ssh
         hostPath:
-          path: /usr/local/Yottadb-Demo/.ssh
+          path: /usr/local/YottaDB-Demo/.ssh
       - name: newman
         hostPath:
-          path: /usr/local/Yottadb-Demo/mapped
+          path: /usr/local/YottaDB-Demo/mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -230,5 +230,5 @@ spec:
       volumes:
       - name: metabase
         hostPath:
-          path: /usr/local/Yottadb-Demo/metabase
+          path: /usr/local/YottaDB-Demo/metabase
 
