@@ -2,31 +2,51 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: yotta-mgweb
+  name: yottamgweb
 spec:
-  type: LoadBalancer
   selector:
     app: yottamgweb
   ports:
     - port: 8080
       targetPort: 8080
-status:
-  loadBalancer:
-    ingress:
-    - ip: 127.0.0.1
+  externalIPs:
+    - 10.0.2.15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yotta-global
+spec:
+  selector:
+    app: yottaglobal
+  ports:
+    - port: 8001
+      targetPort: 8001
+  externalIPs:
+    - 10.0.2.15
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: metabase
 spec:
-  type: LoadBalancer
   selector:
     app: metabase
   ports:
     - port: 3000
       targetPort: 3000
-status:
-  loadBalancer:
-    ingress:
-    - ip: 127.0.0.1
+  externalIPs:
+    - 10.0.2.15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ide
+spec:
+  selector:
+    app: ide
+  ports:
+    - port: 3002
+      targetPort: 3000
+  externalIPs:
+    - 10.0.2.15
