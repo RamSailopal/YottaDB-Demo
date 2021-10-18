@@ -56,7 +56,7 @@ spec:
           path: /usr/local/YottaDB-Demo/.ssh
       - name: lsync
         hostPath:
-          path: /usr/local/YottaDB-Demo/lsyncd/lysncd.conf
+          path: /usr/local/YottaDB-Demo/lsyncd/lsyncd.conf
       - name: footie
         hostPath:
           path: /usr/local/YottaDB-Demo/EnglishFootball
