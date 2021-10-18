@@ -17,6 +17,9 @@ Vagrant.configure("2") do |config|
   cd /usr/local/YottaDB-Demo/Kubernetes
   sudo chown vagrant *
   export IPADD=$(ping -c 1 $(hostname) | awk -F '[()]' 'NR==1 { print $2 }') && sed -i 's/\$IPADD/'$IPADD'/' services.yaml && sed -i 's/\$IPADD/'$IPADD'/' metaentry/entrypoint.sh
+  kubectl create namespace test 
+  kubectl config set-context test --namespace=test --cluster=minikube --user=minikube
+  kubectl config use-context test
   kubectl apply -f volumes.yaml
   sleep 100
   kubectl apply -f deployments.yaml
