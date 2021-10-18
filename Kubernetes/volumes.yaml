@@ -25,7 +25,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: demo-pvc
-  namespace: default
+  namespace: test
 spec:
   volumeName: demo-pv
   volumeMode: Filesystem
@@ -63,7 +63,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: yotta-pvc
-  namespace: default
+  namespace: test
 spec:
   volumeName: yotta-pv
   volumeMode: Filesystem
