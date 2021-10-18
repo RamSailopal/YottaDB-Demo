@@ -9,5 +9,5 @@ then
  (echo "D ^%GI";echo "/home/footie/Football.go";echo "") | ydb
  cd /opt/mgweb && /opt/mgweb/start
 else
- ./start.sh
+ /home/entrypoint/start.sh
 fi
