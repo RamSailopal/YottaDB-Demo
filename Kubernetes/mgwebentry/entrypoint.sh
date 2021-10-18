@@ -7,5 +7,7 @@ if ! test -f /opt/yottadb/yottadb.gld
 then
  /usr/local/bin/dbprov.sh
  (echo "D ^%GI";echo "/home/footie/Football.go";echo "") | ydb
+ cd /opt/mgweb && /opt/mgweb/start
+else
+ cd ./start.sh
 fi
-cd /opt/mgweb && /opt/mgweb/start
