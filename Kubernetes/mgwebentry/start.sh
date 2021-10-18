@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd /opt/mgweb
 chmod 0777 mapped
 
 if [ -f "/opt/mgweb/mapped/start" ]; then
