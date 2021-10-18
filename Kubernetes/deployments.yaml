@@ -62,7 +62,7 @@ spec:
           path: /usr/local/YottaDB-Demo/EnglishFootball
       - name: entrypoint
         hostPath:
-          path: /usr/local/YottaDB-Demo/entrypoint
+          path: /usr/local/YottaDB-Demo/Kubernetes/mgwebentry
       - name: mgweb
         hostPath:
           path: /usr/local/YottaDB-Demo/mapped
