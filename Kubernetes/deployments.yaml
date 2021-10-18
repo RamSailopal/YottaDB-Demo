@@ -32,6 +32,8 @@ spec:
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
+        - mountPath: "/opt/yottadb"
+          name: yottavol
         - mountPath: "/root/.ssh"
           name: ssh
         - mountPath: "/etc/lsyncd.conf"
@@ -46,6 +48,9 @@ spec:
       - name: demovol
         persistentVolumeClaim:
           claimName: demo-pvc
+      - name: yottavol
+        persistentVolumeClaim:
+          claimName: yotta-pvc
       - name: ssh
         hostPath:
           path: /usr/local/YottaDB-Demo/.ssh

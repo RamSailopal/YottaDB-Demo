@@ -35,3 +35,41 @@ spec:
   resources:
     requests:
       storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: yotta-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: ""
+  local:
+    path: /mnt/kube/volume1
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - localhost.localdomain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: yotta-pvc
+  namespace: default
+spec:
+  volumeName: yotta-pv
+  volumeMode: Filesystem
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
