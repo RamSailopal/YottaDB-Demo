@@ -12,7 +12,7 @@ For demonstation purposes, Kubernetes is deployed in a single node cluster using
     
 # Architecture
 
-![Alt text](YottaDB-Demo-Kube.PNG?raw=true "Kubernetes Architecture")
+![Alt text](Kubernetes/YottaDB-Demo-Kube.PNG?raw=true "Kubernetes Architecture")
 
 Persistent volumes are created for the YottaDB database and the API code. In this Vagrant implementation, these persistent volumes are served simply as a host drive but for redundancy in a production environment, the volumes should be node independant i.e a cloud service provider NFS.
 
