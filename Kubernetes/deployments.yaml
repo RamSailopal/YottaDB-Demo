@@ -18,7 +18,7 @@ spec:
       - name: yottamgweb
         image: docker.io/ramb0/yotta-mgweb:latest
         command: ["/bin/bash"]
-        args: ["-c","/home/git/YottaDB-Demo/Kubernetetes/mgwebentry/entrypoint.sh"]
+        args: ["-c","/home/git/YottaDB-Demo/Kubernetes/mgwebentry/entrypoint.sh"]
         env:
         - name: glbviewport
           value: "8001"
