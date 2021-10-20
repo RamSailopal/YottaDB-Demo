@@ -29,11 +29,9 @@ spec:
         ports:
         - containerPort: 8080
         - containerPort: 8001
-      initContainers:
-      - name: init-yottamgweb
-        image: bitnami/git
-        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
         volumeMounts:
+        - mountPath: "/home/project"
+          name: demovol
         - mountPath: "/home/project"
           name: demovol
         - mountPath: "/opt/yottadb"
@@ -48,6 +46,15 @@ spec:
           name: entrypoint
         - mountPath: "/opt/mgweb/mapped"
           name: mgweb
+        - mountPath: "/home/git"
+          name: gitvol
+      initContainers:
+      - name: init-yottamgweb
+        image: bitnami/git
+        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
+        volumeMounts:
+        - mountPath: "/home/git"
+          name: gitvol
       volumes:
       - name: demovol
         persistentVolumeClaim:
@@ -55,6 +62,9 @@ spec:
       - name: yottavol
         persistentVolumeClaim:
           claimName: yotta-pvc
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
       - name: ssh
         hostPath:
           path: /usr/local/YottaDB-Demo/.ssh
@@ -92,10 +102,6 @@ spec:
         image: docker.io/ramb0/theia-mumps:latest
         ports:
         - containerPort: 3000
-      initContainers:
-      - name: init-ide
-        image: bitnami/git
-        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
@@ -105,10 +111,22 @@ spec:
           name: ssh
         - mountPath: "/home/theia/.theia"
           name: theia
+        - mountPath: "/home/git"
+          name: gitvol
+      initContainers:
+      - name: init-ide
+        image: bitnami/git
+        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
+        volumeMounts:
+        - mountPath: "/home/git"
+          name: gitvol
       volumes:
       - name: demovol
         persistentVolumeClaim:
           claimName: demo-pvc
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
       - name: ssh
         hostPath:
           path: /usr/local/YottaDB-Demo/.ssh
