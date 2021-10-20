@@ -30,9 +30,9 @@ spec:
         - containerPort: 8080
         - containerPort: 8001
       initContainers:
-      - name: init-myservice
+      - name: init-yottamgweb
         image: busybox:1.28
-        command: ['bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
+        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
@@ -93,9 +93,9 @@ spec:
         ports:
         - containerPort: 3000
       initContainers:
-      - name: init-myservice
+      - name: init-ide
         image: busybox:1.28
-        command: ['bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
+        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
