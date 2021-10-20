@@ -66,17 +66,13 @@ spec:
       containers:
       - name: ide
         image: docker.io/ramb0/theia-mumps:latest
+        command: ["/bin/bash"]
+        args: ["-c","/home/git/YottaDB-Demo/Kubernetes/ideentry/entrypoint.sh"]
         ports:
         - containerPort: 3000
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
-        - mountPath: "/home/yottadb-settings"
-          name: settings
-        - mountPath: "/root/.ssh"
-          name: ssh
-        - mountPath: "/home/theia/.theia"
-          name: theia
         - mountPath: "/home/git"
           name: gitvol
       volumes:
@@ -86,15 +82,6 @@ spec:
       - name: gitvol
         persistentVolumeClaim:
           claimName: git-pvc
-      - name: ssh
-        hostPath:
-          path: /usr/local/YottaDB-Demo/.ssh
-      - name: settings
-        hostPath:
-          path: /usr/local/YottaDB-Demo/project
-      - name: theia
-        hostPath:
-          path: /usr/local/YottaDB-Demo/Kubernetes/.theia
 ---
 apiVersion: apps/v1
 kind: Deployment
