@@ -32,8 +32,6 @@ spec:
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
-        - mountPath: "/home/project"
-          name: demovol
         - mountPath: "/opt/yottadb"
           name: yottavol
         - mountPath: "/root/.ssh"
