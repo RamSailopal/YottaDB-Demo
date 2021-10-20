@@ -1,5 +1,13 @@
 #!/bin/bash
 service ssh start
+mkdir /root/.ssh
+cp -Rf /home/git/YottaDB-Demo/.ssh /root/.ssh
+mkdir /home/footie
+cp -Rf /home/git/YottaDB-Demo/EnglishFootball /home/footie
+cp /usr/local/YottaDB-Demo/lsyncd/lsyncd.conf /etc/lsyncd.conf
+mkdir /home/entrypoint
+cp -Rf /usr/local/YottaDB-Demo/Kubernetes/mgwebentry /home/entrypoint
+cp -Rf /usr/local/YottaDB-Demo/mapped /opt/mgweb/mapped
 cd /usr/local/YottaDB-dashboard/glbview
 /usr/local/YottaDB-dashboard/glbview/globview.sh start
 /usr/local/bin/start.sh

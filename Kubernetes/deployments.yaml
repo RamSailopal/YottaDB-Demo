@@ -34,16 +34,6 @@ spec:
           name: demovol
         - mountPath: "/opt/yottadb"
           name: yottavol
-        - mountPath: "/root/.ssh"
-          name: ssh
-        - mountPath: "/etc/lsyncd.conf"
-          name: lsync
-        - mountPath: "/home/footie"
-          name: footie
-        - mountPath: "/home/entrypoint"
-          name: entrypoint
-        - mountPath: "/opt/mgweb/mapped"
-          name: mgweb
         - mountPath: "/home/git"
           name: gitvol
       initContainers:
@@ -63,21 +53,6 @@ spec:
       - name: gitvol
         persistentVolumeClaim:
           claimName: git-pvc
-      - name: ssh
-        hostPath:
-          path: /usr/local/YottaDB-Demo/.ssh
-      - name: lsync
-        hostPath:
-          path: /usr/local/YottaDB-Demo/lsyncd/lsyncd.conf
-      - name: footie
-        hostPath:
-          path: /usr/local/YottaDB-Demo/EnglishFootball
-      - name: entrypoint
-        hostPath:
-          path: /usr/local/YottaDB-Demo/Kubernetes/mgwebentry
-      - name: mgweb
-        hostPath:
-          path: /usr/local/YottaDB-Demo/mapped
 ---
 apiVersion: apps/v1
 kind: Deployment
