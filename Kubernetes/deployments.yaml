@@ -36,13 +36,6 @@ spec:
           name: yottavol
         - mountPath: "/home/git"
           name: gitvol
-      initContainers:
-      - name: init-yottamgweb
-        image: bitnami/git
-        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
-        volumeMounts:
-        - mountPath: "/home/git"
-          name: gitvol
       volumes:
       - name: demovol
         persistentVolumeClaim:
@@ -84,13 +77,6 @@ spec:
           name: ssh
         - mountPath: "/home/theia/.theia"
           name: theia
-        - mountPath: "/home/git"
-          name: gitvol
-      initContainers:
-      - name: init-ide
-        image: bitnami/git
-        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
-        volumeMounts:
         - mountPath: "/home/git"
           name: gitvol
       volumes:
