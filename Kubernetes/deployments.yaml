@@ -31,7 +31,7 @@ spec:
         - containerPort: 8001
       initContainers:
       - name: init-yottamgweb
-        image: busybox:1.28
+        image: bitnami/git
         command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
         volumeMounts:
         - mountPath: "/home/project"
@@ -94,7 +94,7 @@ spec:
         - containerPort: 3000
       initContainers:
       - name: init-ide
-        image: busybox:1.28
+        image: bitnami/git
         command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git"]
         volumeMounts:
         - mountPath: "/home/project"
