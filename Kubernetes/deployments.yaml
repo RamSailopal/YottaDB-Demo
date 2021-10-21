@@ -103,21 +103,22 @@ spec:
       - name: metabase
         image: docker.io/huksley/metabase
         command: ["/bin/bash"]
-        args: ["-c","/home/entrypoint/entrypoint.sh"]
+        args: ["-c","/home/git/YottaDB-Demo/Kubernetes/metaentry/entrypoint.sh"]
         env:
         - name: MB_DB_FILE
           value: "/home/metabase/metabase.db"
         ports:
         - containerPort: 3000
         volumeMounts:
-        - mountPath: "/home/metabase"
-          name: metabase
-        - mountPath: "/home/entrypoint"
-          name: entrypoint
+        - mountPath: "/home/project"
+          name: demovol
+        - mountPath: "/home/git"
+          name: gitvol
       volumes:
-      - name: metabase
-        hostPath:
-          path: /usr/local/YottaDB-Demo/metabase
-      - name: entrypoint
-        hostPath:
-          path: /usr/local/YottaDB-Demo/Kubernetes/metaentry
+      - name: demovol
+        persistentVolumeClaim:
+          claimName: demo-pvc
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
+
