@@ -10,6 +10,10 @@ For demonstation purposes, Kubernetes is deployed in a single node cluster using
     
     vagrant up
     
+Wait for the following message to appear:
+
+    Kubernetes deployment is now running!!!
+    
 # Architecture
 
 ![Alt text](YottaDB-Demo-Kube.png?raw=true "Kubernetes Architecture")
