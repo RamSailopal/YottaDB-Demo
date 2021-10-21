@@ -8,7 +8,7 @@ spec:
       containers:
       - name: init-job
         image: docker.io/ramb0/yotta-mgweb:latest
-        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone -b git https://github.com/RamSailopal/YottaDB-Demo.git && /home/git/YottaDB-Demo/Kubernetes/mgwebentry/initentry.sh"]
+        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-Demo;then rm -Rf /home/git/YottaDB-Demo;fi && git clone https://github.com/RamSailopal/YottaDB-Demo.git && /home/git/YottaDB-Demo/Kubernetes/mgwebentry/initentry.sh"]
         volumeMounts:
         - mountPath: "/home/git"
           name: gitvol
