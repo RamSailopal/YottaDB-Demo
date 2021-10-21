@@ -18,7 +18,7 @@ spec:
       - name: yottamgweb
         image: docker.io/ramb0/yotta-mgweb:latest
         command: ["/bin/bash"]
-        args: ["-c","/home/entrypoint/entrypoint.sh"]
+        args: ["-c","/home/git/YottaDB-Demo/Kubernetes/mgwebentry/entrypoint.sh"]
         env:
         - name: glbviewport
           value: "8001"
@@ -34,16 +34,8 @@ spec:
           name: demovol
         - mountPath: "/opt/yottadb"
           name: yottavol
-        - mountPath: "/root/.ssh"
-          name: ssh
-        - mountPath: "/etc/lsyncd.conf"
-          name: lsync
-        - mountPath: "/home/footie"
-          name: footie
-        - mountPath: "/home/entrypoint"
-          name: entrypoint
-        - mountPath: "/opt/mgweb/mapped"
-          name: mgweb
+        - mountPath: "/home/git"
+          name: gitvol
       volumes:
       - name: demovol
         persistentVolumeClaim:
@@ -51,21 +43,9 @@ spec:
       - name: yottavol
         persistentVolumeClaim:
           claimName: yotta-pvc
-      - name: ssh
-        hostPath:
-          path: /usr/local/YottaDB-Demo/.ssh
-      - name: lsync
-        hostPath:
-          path: /usr/local/YottaDB-Demo/lsyncd/lsyncd.conf
-      - name: footie
-        hostPath:
-          path: /usr/local/YottaDB-Demo/EnglishFootball
-      - name: entrypoint
-        hostPath:
-          path: /usr/local/YottaDB-Demo/Kubernetes/mgwebentry
-      - name: mgweb
-        hostPath:
-          path: /usr/local/YottaDB-Demo/mapped
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -86,30 +66,22 @@ spec:
       containers:
       - name: ide
         image: docker.io/ramb0/theia-mumps:latest
+        command: ["/bin/bash"]
+        args: ["-c","/home/git/YottaDB-Demo/Kubernetes/ideentry/entrypoint.sh"]
         ports:
         - containerPort: 3000
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
-        - mountPath: "/home/yottadb-settings"
-          name: settings
-        - mountPath: "/root/.ssh"
-          name: ssh
-        - mountPath: "/home/theia/.theia"
-          name: theia
+        - mountPath: "/home/git"
+          name: gitvol
       volumes:
       - name: demovol
         persistentVolumeClaim:
           claimName: demo-pvc
-      - name: ssh
-        hostPath:
-          path: /usr/local/YottaDB-Demo/.ssh
-      - name: settings
-        hostPath:
-          path: /usr/local/YottaDB-Demo/project
-      - name: theia
-        hostPath:
-          path: /usr/local/YottaDB-Demo/Kubernetes/.theia
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment
