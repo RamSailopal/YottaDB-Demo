@@ -32,6 +32,9 @@ fi
 export ydb_gbldir=/opt/yottadb/yottadb.gld
 ./ydb_run start^%zmgwebUtils
 
+cd /usr/local/YottaDB-dashboard/glbview
+/usr/local/YottaDB-dashboard/glbview/globview.sh start
+
 /etc/init.d/apache2 start
 echo "Apache started"
 #service xinetd start
