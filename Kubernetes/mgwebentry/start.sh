@@ -33,7 +33,7 @@ if [ ! -f "/opt/mgweb/mapped/mpm_event.conf" ]; then
 fi
 
 export ydb_gbldir=/opt/yottadb/yottadb.gld
-out=$(ydb <<< 'D start^%zmgwebUtils' 2>&1)
+out=$(ydb <<< 'ZL "_zmgwebUtils" D start^%zmgwebUtils' 2>&1)
 echo "$out"
 if grep -q "%YDB-E" <<< $out
 then
@@ -48,7 +48,7 @@ then
                 ydb <<< 'D start^%zmgwebUtils'
 	fi
 fi
-
+/usr/local/lib/yottadb/r130/mupip rundown -region default
 /etc/init.d/apache2 start
 echo "Apache started"
 #service xinetd start
