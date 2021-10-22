@@ -31,9 +31,13 @@ fi
 
 export ydb_gbldir=/opt/yottadb/yottadb.gld
 ydb <<< "D start^%zmgwebUtils"
+pid=$(lsof | grep mgweb.dat | awk '{ print $2 }')
+if [[ $pid" != "" ]]
+then
+	kill -9 $pid
+fi
 /usr/local/lib/yottadb/r130/mupip rundown -region default
 ydb <<< "D start^%zmgwebUtils"
-/usr/local/lib/yottadb/r130/mupip rundown -region default
 
 cd /usr/local/YottaDB-dashboard/glbview
 /usr/local/YottaDB-dashboard/glbview/globview.sh start
