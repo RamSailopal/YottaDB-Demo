@@ -35,7 +35,7 @@ fi
 export ydb_gbldir=/opt/yottadb/yottadb.gld
 out=$(ydb <<< 'D start^%zmgwebUtils' 2>&1)
 echo "$out"
-if grep -q "%YDB-E" <<< $ram
+if grep -q "%YDB-E" <<< $out
 then
 	pid=$(lsof | grep mgweb.dat | awk '{ print $2 }')
 	if [[ "$pid" != "" ]]
