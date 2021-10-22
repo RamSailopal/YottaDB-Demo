@@ -33,11 +33,10 @@ if [ ! -f "/opt/mgweb/mapped/mpm_event.conf" ]; then
 fi
 
 export ydb_gbldir=/opt/yottadb/yottadb.gld
-out=$(ydb <<< 'ZL "_zmgwebUtils" D start^%zmgwebUtils' 2>&1)
+out=$(ydb <<< 'W  \$ZV ZL "_zmgwebUtils" D start^%zmgwebUtils' 2>&1)
 echo "$out"
 if grep -q "%YDB-E" <<< $out
 then
-        exit 1
 	pid=$(lsof | grep mgweb.dat | awk '{ print $2 }')
 	if [[ "$pid" != "" ]]
 	then
