@@ -37,6 +37,7 @@ out=$(ydb <<< 'ZL "_zmgwebUtils" D start^%zmgwebUtils' 2>&1)
 echo "$out"
 if grep -q "%YDB-E" <<< $out
 then
+        exit 1
 	pid=$(lsof | grep mgweb.dat | awk '{ print $2 }')
 	if [[ "$pid" != "" ]]
 	then
