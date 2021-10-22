@@ -1,4 +1,7 @@
 #!/bin/bash
+cd /usr/local/YottaDB-dashboard/glbview
+/usr/local/YottaDB-dashboard/glbview/globview.sh start
+
 cd /opt/mgweb
 chmod 0777 mapped
 
@@ -45,8 +48,6 @@ then
                 ydb <<< 'D start^%zmgwebUtils'
 	fi
 fi
-cd /usr/local/YottaDB-dashboard/glbview
-/usr/local/YottaDB-dashboard/glbview/globview.sh start
 
 /etc/init.d/apache2 start
 echo "Apache started"
