@@ -32,7 +32,7 @@ fi
 export ydb_gbldir=/opt/yottadb/yottadb.gld
 ydb <<< "D start^%zmgwebUtils"
 pid=$(lsof | grep mgweb.dat | awk '{ print $2 }')
-if [[ $pid" != "" ]]
+if [[ "$pid" != "" ]]
 then
 	kill -9 $pid
 fi
