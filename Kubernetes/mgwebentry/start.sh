@@ -48,7 +48,14 @@ then
                 ydb <<< 'D start^%zmgwebUtils'
 	fi
 fi
-/usr/local/lib/yottadb/r130/mupip rundown -region default
+pid=$(lsof | grep mgweb.dat | awk '{ print $2 }')
+if [[ "$pid" != "" ]]
+then
+	kill -9 $pid
+	/usr/local/lib/yottadb/r130/mupip rundown -region default
+else
+	/usr/local/lib/yottadb/r130/mupip rundown -region default
+fi
 /etc/init.d/apache2 start
 echo "Apache started"
 #service xinetd start
