@@ -30,15 +30,19 @@ if [ ! -f "/opt/mgweb/mapped/mpm_event.conf" ]; then
 fi
 
 export ydb_gbldir=/opt/yottadb/yottadb.gld
-/opt/mgweb/ydb_run "start^%zmgwebUtils"
-if [[ "$?" != "0" ]]
+out=$(ydb <<< 'D start^%zmgwebUtils' 2>&1)
+echo "$out"
+if grep -q "Must be rundown" <<< $ram
 then
 	pid=$(lsof | grep mgweb.dat | awk '{ print $2 }')
 	if [[ "$pid" != "" ]]
 	then
 		kill -9 $pid
                 /usr/local/lib/yottadb/r130/mupip rundown -region default
-                /opt/mgweb/ydb_run "start^%zmgwebUtils"
+                ydb <<< 'D start^%zmgwebUtils'
+        else
+                /usr/local/lib/yottadb/r130/mupip rundown -region default
+                ydb <<< 'D start^%zmgwebUtils'
 	fi
 fi
 cd /usr/local/YottaDB-dashboard/glbview
