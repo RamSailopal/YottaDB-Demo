@@ -30,7 +30,7 @@ if [ ! -f "/opt/mgweb/mapped/mpm_event.conf" ]; then
 fi
 
 export ydb_gbldir=/opt/yottadb/yottadb.gld
-ydb <<< "D start^%zmgwebUtils"
+ydb <<< "W \$ZV;D start^%zmgwebUtils"
 /usr/local/lib/yottadb/r130/mupip rundown -region default
 
 cd /usr/local/YottaDB-dashboard/glbview
