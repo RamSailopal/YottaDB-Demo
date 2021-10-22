@@ -33,7 +33,7 @@ if [ ! -f "/opt/mgweb/mapped/mpm_event.conf" ]; then
 fi
 
 export ydb_gbldir=/opt/yottadb/yottadb.gld
-out=$(ydb <<< 'W  \$ZV ZL "_zmgwebUtils" D start^%zmgwebUtils' 2>&1)
+out=$(ydb <<< 'W $ZV ZL "_zmgwebUtils" D start^%zmgwebUtils' 2>&1)
 echo "$out"
 if grep -q "%YDB-E" <<< $out
 then
