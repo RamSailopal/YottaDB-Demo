@@ -119,15 +119,15 @@ spec:
         env:
         - name: MB_DB_FILE
           value: "/home/metabase/metabase.db"
+        - name: IPADD
+          value: "$IPADD"
         ports:
         - containerPort: 3000
         livenessProbe:
-          httpGet:
-           path: /
+          tcpSocket:
            port: 3000
-          initialDelaySeconds: 10
+          initialDelaySeconds: 180
           periodSeconds: 3
-
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
