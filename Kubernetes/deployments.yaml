@@ -5,7 +5,7 @@ metadata:
   labels:
     app: yottamgweb
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: yottamgweb
@@ -29,6 +29,12 @@ spec:
         ports:
         - containerPort: 8080
         - containerPort: 8001
+        livenessProbe:
+          httpGet:
+           path: /
+           port: 8080
+         initialDelaySeconds: 10
+         periodSeconds: 3
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
@@ -70,6 +76,12 @@ spec:
         args: ["-c","/home/git/YottaDB-Demo/Kubernetes/ideentry/entrypoint.sh"]
         ports:
         - containerPort: 3000
+        livenessProbe:
+          httpGet:
+           path: /
+           port: 3000
+         initialDelaySeconds: 10
+         periodSeconds: 3
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
@@ -109,6 +121,13 @@ spec:
           value: "/home/metabase/metabase.db"
         ports:
         - containerPort: 3000
+        livenessProbe:
+          httpGet:
+           path: /
+           port: 3000
+         initialDelaySeconds: 10
+         periodSeconds: 3
+
         volumeMounts:
         - mountPath: "/home/project"
           name: demovol
