@@ -22,5 +22,7 @@ Persistent volumes are created for the YottaDB database and the API code. In thi
 
 Externally exposed services are created for the API (port 8001), the IDE (port 3002), the global viewer (8001) and Metabase (3000). These can be accessed i.e http://localhost:3000. Internal cluster exposure is made to the ssh port 22 for IDE access to YottaDB via the terminal
 
-The existing set up means there is a single point of failure with the Metabase deployment given that there is only one pod in the deployment. This can be avoided by utilising SQL as a Metabase storage option and utilsing a fault tollerant DatabaseAsAService approach from a cloud service provider.
+The existing set up means there is a single point of failure with the Metabase deployment given that there is only one pod in the deployment. Any outage with the existing pod will be recovered by Kubernetes automatically replacing the problematic pod with a healthy one but the replacement will be done without 0 service downtime. This can be avoided by utilising SQL as a Metabase storage option and utilsing a fault tollerant DatabaseAsAService approach from a cloud service provider.
+
+The issue with a single pod deployment also occurs for the YottaDB implementation. CURRENTLY, because YottaDB requires shared host memory and resource in order to allow inter process communication this causes issues with Kubernetes. Kubernetes only allows the sharing of node resources across pods, making scaling and also fault tollreance across multiple nodes difficult. The guys at YottaDB are working on a set up to allow the full benefits of Kubernetes to be experienced when implementing YottaDB.
 
